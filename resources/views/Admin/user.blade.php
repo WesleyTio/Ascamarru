@@ -25,6 +25,7 @@
             <thead>
                 <tr>
                     <th scope="col" >Nome</th>
+                    <th scope="col" >Login</th>
                     <th scope="col" >Email</th>
                     <th scope="col" >Alterar</th>
             </tr>
@@ -33,12 +34,21 @@
                     @foreach ($users as $user )
                     <tr>
                         <td>{{ $user->name }}</td>
+                        <td>{{ $user->login }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
                             <!-- desbilita os botoes caso o usuario listado seja Admin-->
                             <div>
-                                <a class="btn btn-outline-primary disabled" tabindex="-1" role="button" aria-disabled="true" href="#"  >Editar</a>
-                                <a class="btn btn-outline-danger disabled" tabindex="-1" role="button" aria-disabled="true" href="#">Deletar</a>
+                                @if ($user->type_user === 1)
+                                    <a class="btn btn-outline-primary disabled" tabindex="-1" role="button" aria-disabled="true" href="#"  >Editar</a>
+                                    <a class="btn btn-outline-danger disabled" tabindex="-1" role="button" aria-disabled="true" href="#">Deletar</a>
+
+                                @else
+                                    <a class="btn btn-outline-primary" tabindex="-1" role="button" aria-disabled="true" href="#"  >Editar</a>
+                                    <a class="btn btn-outline-danger" tabindex="-1" role="button"
+                                    aria-disabled="true" href="#">Deletar</a>
+                                @endif
+
                             </div>
                         </td>
                     </tr>

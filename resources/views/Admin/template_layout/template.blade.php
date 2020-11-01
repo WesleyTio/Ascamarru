@@ -57,7 +57,7 @@
                                 <span class="material-icons align-middle"> person </span>
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             @auth
-                                <span>{{ Auth::user()->name }}</span>
+                                <span>{{ Auth::user()->login }}</span>
                             @endauth
 
 
