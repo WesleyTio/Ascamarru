@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\route;
 use Illuminate\Http\Request;
 use app\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,8 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
-        $users = User::all();
+        //Carrega todos os usuarios na lista, exeto o que está conectado
+        $users = User::where('login','!=', Auth::user()->login)->get();
         return view('Admin.user', compact('users'));
     }
 
@@ -28,6 +30,41 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('Admin.userCreate');
+
+    }
+
+    public function validateUser(Request $request)
+    {
+        $type = $request->type;
+
+        if($type === "1"){
+            // busca por email cadastrado no banco de dados
+            $retorno = User::where('email', $request->user_email)->first();
+            if($retorno != true){
+                $resposta["sucesso"] = true;
+                $resposta["mensagem"] = "E-mail validado com sucesso ";
+            }else{
+                $resposta["sucesso"] = false;
+                $resposta["mensagem"] = "E-mail já cadastrado, tente outro!";
+            }
+
+        }elseif ($type === "2") {
+            $retorno = User::where('login', $request->user_login)->first();
+            if($retorno != true){
+                $resposta["sucesso"] = true;
+                $resposta["mensagem"] = "Login validado com sucesso";
+            }else{
+                $resposta["sucesso"] = false;
+                $resposta["mensagem"] = "Login já cadastrado, tente outro!";
+            }
+        }else{
+            $resposta["sucesso"] = false;
+            $resposta["mensagem"] = "não foi possível realizar verificação!!";
+
+        }
+        echo json_encode($resposta);
+        return ;
     }
 
     /**
@@ -39,7 +76,18 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $user = new User();
+        $user->name = $request->user_name;
+        $user->email = $request->user_email;
+        $user->login = $request->user_login;
+        $user->password = bcrypt("123456");
+        $user->type_user = $request->type == null? '0': '1';
+        $user->save();
+
+        return redirect()->action([UserController::class, 'index']);
+
     }
+
 
     /**
      * Display the specified resource.
@@ -61,6 +109,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user = User::find($id);
+        return view('Admin.userEdit', compact('user'));
     }
 
     /**

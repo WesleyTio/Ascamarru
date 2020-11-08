@@ -31,5 +31,22 @@ class UserSeeder extends Seeder
             User::create($dados);
             echo "usario criado";
         }
+        //Outro tipo de usuario pra testes!
+        $dados2 =[
+            'name' =>"José Tio",
+            'login' =>"WesleyTio",
+            'email' => "wesleymagnos@gmail.com",
+            'password' => bcrypt("123456"),
+            'type_user' => false,
+        ];
+
+        if(User::where('email','=',$dados2['email'])->count()){
+            $user = User::where('email','=',$dados2['email'])->first();
+            $user->update($dados2);
+            echo "usuario 2 alterado";
+        }else{
+            User::create($dados2);
+            echo "usuario 2 criado";
+        }
     }
 }

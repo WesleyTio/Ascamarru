@@ -29,10 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin','Admin\HomeController@index')->name('admin.home');
 
     Route::get('/admin/users','Admin\UserController@index')->name('admin.users');
-    Route::get('/admin/users/add','Admin\UserController@create')->name('admin.users.add');
-    Route::post('/admin/users/save','Admin\UserController@save')->name('admin.users.save');
-    Route::get('/admin/users/edit/{id}','Admin\UserController@edit')->name('admin.edit');
-    Route::put('/admin/users/updade/{id}','Admin\UserController@updade')->name('admin.updade');
+    Route::get('/admin/users/add','Admin\UserController@Create')->name('admin.users.create');
+    Route::get('/admin/users/validate','Admin\UserController@validateUser')->name('admin.users.validate');
+    Route::post('/admin/users/save','Admin\UserController@store')->name('admin.users.save');
+    Route::get('/admin/users/edit/{id}','Admin\UserController@edit')->name('admin.users.edit');
+    Route::put('/admin/users/update/{id}','Admin\UserController@update')->name('admin.users.update');
     Route::get('/admin/users/delete/{id}','Admin\UserController@destroy')->name('admin.delete');
 
 

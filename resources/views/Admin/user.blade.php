@@ -4,7 +4,7 @@
 
 <div id="top" class="row justify-content-center">
     <!-- faz busca na tabela de usuarios -->
-    <div class="col-6 ">
+    <div class="col-6 m-1">
         <div class="input-group h2">
             <input name="data[search]" class="form-control" id="busca_user" type="text" placeholder="Pesquisar ADMs">
             <div class="input-group-append">
@@ -15,8 +15,8 @@
         </div>
     </div>
     <!--  chama o metodo novo do UserController -->
-    <div class="col-3">
-        <a href="#" class="btn btn-success pull-right h2">Novo Admin</a>
+    <div class="col-3 m-1" >
+        <a href="{{ route('admin.users.create') }}" class="btn btn-success pull-right h2">Novo Admin</a>
     </div>
 </div>
 <div id="list" class="row">
@@ -39,15 +39,10 @@
                         <td>
                             <!-- desbilita os botoes caso o usuario listado seja Admin-->
                             <div>
-                                @if ($user->type_user === 1)
-                                    <a class="btn btn-outline-primary disabled" tabindex="-1" role="button" aria-disabled="true" href="#"  >Editar</a>
-                                    <a class="btn btn-outline-danger disabled" tabindex="-1" role="button" aria-disabled="true" href="#">Deletar</a>
 
-                                @else
-                                    <a class="btn btn-outline-primary" tabindex="-1" role="button" aria-disabled="true" href="#"  >Editar</a>
-                                    <a class="btn btn-outline-danger" tabindex="-1" role="button"
-                                    aria-disabled="true" href="#">Deletar</a>
-                                @endif
+                                <a class="btn btn-outline-primary {{ $user->type_user ===1 ? "disabled" :""  }}" tabindex="-1" role="button" aria-disabled="true"
+                                    href="{{ route('admin.users.edit', $user->id) }}">Editar</a>
+                                <a class="btn btn-outline-danger  {{ $user->type_user ===1 ? "disabled" :""  }}" tabindex="-1" role="button" aria-disabled="true" href="#">Deletar</a>
 
                             </div>
                         </td>
@@ -58,8 +53,6 @@
     </div>
 
 </div>
-<script>
-    $('input#busca_user').quicksearch('table#tabela_user tbody tr');
-</script>
+
 
 @endsection
