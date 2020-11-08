@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $dados =[
             'name' =>"José Wesley",
             'login' =>"ChacalTio",
-            'email' => "wesleymagnos@hotmail.com",
+            'email' => "",
             'password' => bcrypt("123456"),
             'type_user' => true,
         ];
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
         $dados2 =[
             'name' =>"José Tio",
             'login' =>"WesleyTio",
-            'email' => "wesleymagnos@gmail.com",
+            'email' => "",
             'password' => bcrypt("123456"),
             'type_user' => false,
         ];
