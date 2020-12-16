@@ -14,7 +14,7 @@ class CreateTypeMaterialsTable extends Migration
     public function up()
     {
         Schema::create('type_materials', function (Blueprint $table) {
-            $table->id('type_material_id');
+            $table->id();
             $table->string('name',15)->unique();
             $table->string('color',20)->unique();
             $table->string('image',200);

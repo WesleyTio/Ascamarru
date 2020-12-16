@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('admin/worker', 'Admin\WorkerController@index')->name('admin.worker');
-    Route::get('admin/worker/add', 'Admin\WorkerController@create')->name('admin.worker.add');
+    Route::get('admin/worker/add', 'Admin\WorkerController@create')->name('admin.worker.create');
     Route::post('admin/worker/save', 'Admin\WorkerController@save')->name('admin.worker.save');
     Route::get('admin/worker/edit/{id}', 'Admin\WorkerController@edit')->name('admin.worker.edit');
     Route::put('admin/worker/update/{id}', 'Admin\WorkerController@update')->name('admin.worker.update');
@@ -54,8 +54,8 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('admin/tips', 'Admin\TipController@index')->name('admin.tips');
-    Route::get('admin/tips/add', 'Admin\TipController@create')->name('admin.tips.add');
-    Route::post('admin/tips/save', 'Admin\TipController@save')->name('admin.tips.save');
+    Route::get('admin/tips/add', 'Admin\TipController@create')->name('admin.tips.create');
+    Route::post('admin/tips/save', 'Admin\TipController@store')->name('admin.tips.save');
     Route::get('admin/tips/edit/{id}', 'Admin\TipController@edit')->name('admin.tips.edit');
     Route::put('admin/tips/update/{id}', 'Admin\TipController@update')->name('admin.tips.update');
     Route::get('admin/tips/delete/{id}', 'Admin\TipController@destroy')->name('admin.tips.delete');

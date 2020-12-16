@@ -14,7 +14,7 @@ class CreateLocalsTable extends Migration
     public function up()
     {
         Schema::create('locals', function (Blueprint $table) {
-            $table->id('local_id');
+            $table->id();
             $table->string('name')->unique();
             $table->string('address',100);
             $table->string('neighborhood',50);
@@ -22,7 +22,7 @@ class CreateLocalsTable extends Migration
             $table->float('longitude',10,10);
             $table->unsignedBigInteger('fk_routes');
             $table->timestamps();
-            $table->foreign('fk_routes')->references('routes_id')->on('routes');
+            $table->foreign('fk_routes')->references('id')->on('routes');
         });
     }
 

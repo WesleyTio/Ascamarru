@@ -14,7 +14,7 @@ class CreateRoutesTable extends Migration
     public function up()
     {
         Schema::create('routes', function (Blueprint $table) {
-            $table->id('routes_id');
+            $table->id();
             $table->string('period',15);
             $table->string('day_week',15);
             $table->timestamps();

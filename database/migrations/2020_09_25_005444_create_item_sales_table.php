@@ -18,8 +18,8 @@ class CreateItemSalesTable extends Migration
             $table->unsignedBigInteger('fk_type_material');
             $table->unsignedBigInteger('fk_sales');
 
-            $table->foreign('fk_type_material')->references('type_material_id')->on('type_materials');
-            $table->foreign('fk_sales')->references('sales_id')->on('sales');
+            $table->foreign('fk_type_material')->references('id')->on('type_materials');
+            $table->foreign('fk_sales')->references('id')->on('sales');
             $table->timestamps();
         });
     }

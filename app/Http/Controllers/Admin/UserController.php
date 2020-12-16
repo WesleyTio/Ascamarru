@@ -33,7 +33,11 @@ class UserController extends Controller
         return view('Admin.userCreate');
 
     }
-
+    /**
+     * Validate data user from dataBase.
+     *
+     * @return json for Jquery
+     */
     public function validateUser(Request $request)
     {
         $type = $request->type;
@@ -122,7 +126,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Função só será implemntada quando finalizar as validações por emails///
     }
 
     /**
@@ -133,6 +137,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ////Função só será implemntada quando finalizar as validações por emails///
     }
 }

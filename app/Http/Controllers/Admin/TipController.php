@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tip;
 use Illuminate\Http\Request;
 
 class TipController extends Controller
@@ -14,7 +15,8 @@ class TipController extends Controller
      */
     public function index()
     {
-        //
+        $tips = Tip::all();
+        return view('Admin.tip', compact('tips'));
     }
 
     /**
@@ -25,6 +27,7 @@ class TipController extends Controller
     public function create()
     {
         //
+        return view("Admin.tipCreate");
     }
 
     /**
@@ -36,6 +39,16 @@ class TipController extends Controller
     public function store(Request $request)
     {
         //
+        $tip = new Tip();
+        $tip->title = $request->tip_title;
+        $tip->description = $request->tip_desc;
+        // salva se for adcionado uma imagem
+        if(isset($request->tip_image)){
+            $tip->image =  $request->tip_image;
+        }
+        $tip->save();
+
+        return redirect()->action([TipController::class, 'index']);
     }
 
     /**
@@ -57,7 +70,10 @@ class TipController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $tip = Tip::find($id);
+        return view('Admin.tipEdit',compact('tip'));
+
     }
 
     /**
@@ -70,6 +86,17 @@ class TipController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $tip = Tip::find($id);
+        $tip->title = $request->tip_title;
+        $tip->description = $request->tip_desc;
+        // salva se for adcionado uma imagem
+        if(isset($request->tip_image) && strcmp($tip->image, $request->tip_image)){
+            $tip->image =  $request->tip_image;
+        }
+        $tip->save();
+        return redirect()->action([TipController::class, 'index']);
+
+
     }
 
     /**
@@ -81,5 +108,8 @@ class TipController extends Controller
     public function destroy($id)
     {
         //
+        $tip = Tip::destroy($id);
+
+        return redirect()->action([TipController::class, 'index']);
     }
 }
