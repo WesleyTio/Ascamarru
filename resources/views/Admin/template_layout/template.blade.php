@@ -30,7 +30,7 @@
                         <a class="nav-link" href="{{ route('admin.tips') }}">Dicas de reciclagem</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tipos de Material</a>
+                        <a class="nav-link" href="{{ route('admin.type_material') }}">Tipos de Material</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{  route('admin.partner')  }}">Patrocinadores</a>

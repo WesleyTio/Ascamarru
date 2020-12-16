@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\typeMaterial;
 use Illuminate\Http\Request;
 
 class TypeMaterialController extends Controller
@@ -15,6 +16,8 @@ class TypeMaterialController extends Controller
     public function index()
     {
         //
+        $types = typeMaterial::all();
+        return view("Admin.typeMaterial", compact('types'));
     }
 
     /**
@@ -25,6 +28,7 @@ class TypeMaterialController extends Controller
     public function create()
     {
         //
+        return view("Admin.typeMaterialCreate");
     }
 
     /**
@@ -36,6 +40,17 @@ class TypeMaterialController extends Controller
     public function store(Request $request)
     {
         //
+        $type = new typeMaterial();
+        $type->name = $request->type_name;
+        $type->color = $request->type_color;
+        // salva se for adcionado uma imagem
+        if(isset($request->type_image)){
+            $type->image =  $request->type_image;
+        }
+        $type->save();
+
+        return redirect()->action([TypeMaterialController::class, 'index']);
+
     }
 
     /**
@@ -58,6 +73,8 @@ class TypeMaterialController extends Controller
     public function edit($id)
     {
         //
+        $type = typeMaterial::find($id);
+        return view('Admin.typeMaterialEdit',compact('type'));
     }
 
     /**
@@ -70,6 +87,16 @@ class TypeMaterialController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $type = typeMaterial::find($id);
+        $type->name = $request->type_name;
+        $type->color = $request->type_color;
+        // salva se for adcionado uma imagem
+        if(isset($request->type_image)&& (strcmp($type->image, $request->type_image))){
+            $type->image =  $request->type_image;
+        }
+        $type->save();
+
+        return redirect()->action([TypeMaterialController::class, 'index']);
     }
 
     /**
@@ -81,5 +108,7 @@ class TypeMaterialController extends Controller
     public function destroy($id)
     {
         //
+        typeMaterial::destroy($id);
+        return redirect()->action([TypeMaterialController::class, 'index']);
     }
 }

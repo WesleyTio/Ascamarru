@@ -59,4 +59,12 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/tips/edit/{id}', 'Admin\TipController@edit')->name('admin.tips.edit');
     Route::put('admin/tips/update/{id}', 'Admin\TipController@update')->name('admin.tips.update');
     Route::get('admin/tips/delete/{id}', 'Admin\TipController@destroy')->name('admin.tips.delete');
+
+
+    Route::get('admin/type_material', 'Admin\TypeMaterialController@index')->name('admin.type_material');
+    Route::get('admin/type_material/add', 'Admin\TypeMaterialController@create')->name('admin.type_material.create');
+    Route::post('admin/type_material/save', 'Admin\TypeMaterialController@store')->name('admin.type_material.save');
+    Route::get('admin/type_material/edit/{id}', 'Admin\TypeMaterialController@edit')->name('admin.type_material.edit');
+    Route::put('admin/type_material/update/{id}', 'Admin\TypeMaterialController@update')->name('admin.type_material.update');
+    Route::get('admin/type_material/delete/{id}', 'Admin\TypeMaterialController@destroy')->name('admin.type_material.delete');
 });
