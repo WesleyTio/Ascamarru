@@ -33,7 +33,7 @@
                         <a class="nav-link" href="{{ route('admin.type_material') }}">Tipos de Material</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{  route('admin.partner')  }}">Patrocinadores</a>
+                        <a class="nav-link" href="{{ route('admin.partner') }}">Patrocinadores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/#">Locais</a>

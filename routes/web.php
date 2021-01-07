@@ -38,8 +38,8 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('admin/partner', 'Admin\PartnerController@index')->name('admin.partner');
-    Route::get('admin/partner/add', 'Admin\PartnerController@create')->name('admin.partner.add');
-    Route::post('admin/partner/save', 'Admin\PartnerController@save')->name('admin.partner.save');
+    Route::get('admin/partner/add', 'Admin\PartnerController@create')->name('admin.partner.create');
+    Route::post('admin/partner/save', 'Admin\PartnerController@store')->name('admin.partner.save');
     Route::get('admin/partner/edit/{id}', 'Admin\PartnerController@edit')->name('admin.partner.edit');
     Route::put('admin/partner/update/{id}', 'Admin\PartnerController@update')->name('admin.partner.update');
     Route::get('admin/partner/delete/{id}', 'Admin\PartnerController@destroy')->name('admin.partner.delete');
