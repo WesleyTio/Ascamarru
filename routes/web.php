@@ -67,4 +67,18 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/type_material/edit/{id}', 'Admin\TypeMaterialController@edit')->name('admin.type_material.edit');
     Route::put('admin/type_material/update/{id}', 'Admin\TypeMaterialController@update')->name('admin.type_material.update');
     Route::get('admin/type_material/delete/{id}', 'Admin\TypeMaterialController@destroy')->name('admin.type_material.delete');
+
+    Route::get('admin/routes', 'Admin\RouteController@index')->name('admin.routes');
+    Route::get('admin/routes/add', 'Admin\RouteController@create')->name('admin.routes.create');
+    Route::post('admin/routes/save', 'Admin\RouteController@store')->name('admin.routes.save');
+    Route::get('admin/routes/edit/{id}', 'Admin\RouteController@edit')->name('admin.routes.edit');
+    Route::put('admin/routes/update/{id}', 'Admin\RouteController@update')->name('admin.routes.update');
+    Route::get('admin/routes/delete/{id}', 'Admin\RouteController@destroy')->name('admin.routes.delete');
+
+    Route::get('admin/local', 'Admin\LocalController@index')->name('admin.local');
+    Route::get('admin/local/add', 'Admin\LocalController@create')->name('admin.local.create');
+    Route::post('admin/local/save', 'Admin\LocalController@store')->name('admin.local.save');
+    Route::get('admin/local/edit/{id}', 'Admin\LocalController@edit')->name('admin.local.edit');
+    Route::put('admin/local/update/{id}', 'Admin\LocalController@update')->name('admin.local.update');
+    Route::get('admin/local/delete/{id}', 'Admin\LocalController@destroy')->name('admin.local.delete');
 });

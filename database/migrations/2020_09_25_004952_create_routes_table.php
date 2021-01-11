@@ -15,8 +15,14 @@ class CreateRoutesTable extends Migration
     {
         Schema::create('routes', function (Blueprint $table) {
             $table->id();
-            $table->string('period',15);
-            $table->string('day_week',15);
+            $table->string('name', 30);
+            $table->string('period',30);
+            $table->boolean('mon');
+            $table->boolean('tue');
+            $table->boolean('wed');
+            $table->boolean('thu');
+            $table->boolean('fri');
+            $table->boolean('sat');
             $table->timestamps();
         });
     }

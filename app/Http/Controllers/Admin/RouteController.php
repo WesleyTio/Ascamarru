@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\route;
 use Illuminate\Http\Request;
 
 class RouteController extends Controller
@@ -15,6 +16,8 @@ class RouteController extends Controller
     public function index()
     {
         //
+        $routes = route::all();
+        return view("Admin.route", compact('routes'));
     }
 
     /**
@@ -25,6 +28,7 @@ class RouteController extends Controller
     public function create()
     {
         //
+        return view('Admin.routeCreate');
     }
 
     /**
@@ -36,6 +40,19 @@ class RouteController extends Controller
     public function store(Request $request)
     {
         //
+        $route = new route();
+        $route->name = $request->route_name;
+        $route->mon = $request->route_mon == 1 ? true : false;
+        $route->tue = $request->route_tue == 1 ? true : false;
+        $route->wed = $request->route_wed == 1 ? true : false;
+        $route->thu = $request->route_thu == 1 ? true : false;
+        $route->fri = $request->route_fri == 1 ? true : false;
+        $route->sat = $request->route_sat == 1 ? true : false;
+
+        $route->period = $request->route_period;
+        $route->save();
+
+        return redirect()->action([RouteController::class, 'index']);
     }
 
     /**
@@ -58,6 +75,8 @@ class RouteController extends Controller
     public function edit($id)
     {
         //
+        $route = route::find($id);
+        return view('Admin.routeEdit', compact('route'));
     }
 
     /**
@@ -70,6 +89,19 @@ class RouteController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $route = route::find($id);
+        $route->name = $request->route_name;
+        $route->mon = $request->route_mon == 1 ? true : false;
+        $route->tue = $request->route_tue == 1 ? true : false;
+        $route->wed = $request->route_wed == 1 ? true : false;
+        $route->thu = $request->route_thu == 1 ? true : false;
+        $route->fri = $request->route_fri == 1 ? true : false;
+        $route->sat = $request->route_sat == 1 ? true : false;
+
+        $route->period = $request->route_period;
+        $route->save();
+
+        return redirect()->action([RouteController::class, 'index']);
     }
 
     /**
@@ -81,5 +113,9 @@ class RouteController extends Controller
     public function destroy($id)
     {
         //
+        $route = route::destroy($id);
+
+        return redirect()->action([RouteController::class, 'index']);
+
     }
 }

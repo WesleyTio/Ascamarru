@@ -36,10 +36,10 @@
                         <a class="nav-link" href="{{ route('admin.partner') }}">Patrocinadores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/#">Locais</a>
+                        <a class="nav-link" href="{{ route('admin.local') }}">Locais</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/#">Rotas</a>
+                        <a class="nav-link" href="{{ route('admin.routes') }}">Rotas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Vendas</a>
