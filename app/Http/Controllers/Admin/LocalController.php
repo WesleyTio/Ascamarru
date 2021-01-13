@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\local;
+use App\Models\route;
 use Illuminate\Http\Request;
 
 class LocalController extends Controller
@@ -15,6 +17,11 @@ class LocalController extends Controller
     public function index()
     {
         //
+        $locals = local::all();
+
+        return view("Admin.local", compact('locals'));
+
+
     }
 
     /**
@@ -25,6 +32,8 @@ class LocalController extends Controller
     public function create()
     {
         //
+        $routes = route::all(['id','name']);
+        return view('Admin.localCreate', compact('routes'));
     }
 
     /**
@@ -36,6 +45,19 @@ class LocalController extends Controller
     public function store(Request $request)
     {
         //
+        $local = new local();
+        $local->name = $request->local_name;
+        $local->address = $request->local_address;
+        $local->neighborhood = $request->local_neigh;
+        $request->local_latitude != 0 ? $local->latitude = $request->local_latitude : null;
+        $request->local_longitude != 0 ? $local->longitude = $request->local_longitude : null;
+        $local->fk_routes = $request->route_id;
+
+        $local->save();
+
+        return redirect()->action([LocalController::class, 'index']);
+
+
     }
 
     /**
@@ -58,6 +80,9 @@ class LocalController extends Controller
     public function edit($id)
     {
         //
+        $routes = route::all(['id','name']);
+        $local = local::find($id);
+        return view('Admin.localEdit', compact('local','routes'));
     }
 
     /**
@@ -70,6 +95,18 @@ class LocalController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $local = local::find($id);
+        $local->name = $request->local_name;
+        $local->address = $request->local_address;
+        $local->neighborhood = $request->local_neigh;
+        $request->local_latitude != 0 ? $local->latitude = $request->local_latitude : null;
+        $request->local_longitude != 0 ? $local->longitude = $request->local_longitude : null;
+        $local->fk_routes = $request->route_id;
+
+        $local->save();
+
+        return redirect()->action([LocalController::class, 'index']);
+
     }
 
     /**
@@ -81,5 +118,8 @@ class LocalController extends Controller
     public function destroy($id)
     {
         //
+        $local = local::destroy($id);
+
+        return redirect()->action([LocalController::class, 'index']);
     }
 }

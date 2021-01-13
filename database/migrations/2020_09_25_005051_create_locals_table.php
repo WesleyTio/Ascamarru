@@ -18,8 +18,8 @@ class CreateLocalsTable extends Migration
             $table->string('name')->unique();
             $table->string('address',100);
             $table->string('neighborhood',50);
-            $table->float('latitude',10,10);
-            $table->float('longitude',10,10);
+            $table->double('latitude',10,8) ->nullable();
+            $table->double('longitude',10,8)->nullable();
             $table->unsignedBigInteger('fk_routes');
             $table->timestamps();
             $table->foreign('fk_routes')->references('id')->on('routes');

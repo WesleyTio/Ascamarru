@@ -75,10 +75,10 @@ Route::middleware('auth')->group(function () {
     Route::put('admin/routes/update/{id}', 'Admin\RouteController@update')->name('admin.routes.update');
     Route::get('admin/routes/delete/{id}', 'Admin\RouteController@destroy')->name('admin.routes.delete');
 
-    Route::get('admin/local', 'Admin\LocalController@index')->name('admin.local');
-    Route::get('admin/local/add', 'Admin\LocalController@create')->name('admin.local.create');
-    Route::post('admin/local/save', 'Admin\LocalController@store')->name('admin.local.save');
-    Route::get('admin/local/edit/{id}', 'Admin\LocalController@edit')->name('admin.local.edit');
-    Route::put('admin/local/update/{id}', 'Admin\LocalController@update')->name('admin.local.update');
-    Route::get('admin/local/delete/{id}', 'Admin\LocalController@destroy')->name('admin.local.delete');
+    Route::get('admin/locals', 'Admin\LocalController@index')->name('admin.locals');
+    Route::get('admin/locals/add', 'Admin\LocalController@create')->name('admin.locals.create');
+    Route::post('admin/locals/save', 'Admin\LocalController@store')->name('admin.locals.save');
+    Route::get('admin/locals/edit/{id}', 'Admin\LocalController@edit')->name('admin.locals.edit');
+    Route::put('admin/locals/update/{id}', 'Admin\LocalController@update')->name('admin.locals.update');
+    Route::get('admin/locals/delete/{id}', 'Admin\LocalController@destroy')->name('admin.locals.delete');
 });

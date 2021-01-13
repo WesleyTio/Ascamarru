@@ -17,7 +17,7 @@
     </div>
     <!--  chama o metodo novo do LocalController -->
     <div class="col-3 m-1" >
-        <a href="{{ route('admin.local.create') }}" class="btn btn-success pull-right h2">Novo local</a>
+        <a href="{{ route('admin.locals.create') }}" class="btn btn-success pull-right h2">Novo local</a>
     </div>
 </div>
 <div id="list" class="row">
@@ -25,20 +25,22 @@
         <table id="tabela_tips"class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col" >Titulo</th>
+                    <th scope="col" >Nome</th>
+                    <th scope="col" >Endereço</th>
                     <th scope="col" >Alterar</th>
             </tr>
             </thead>
             <tbody>
-                    @foreach ($tips as $tip )
+                    @foreach ($locals as $local )
                     <tr>
-                        <td>{{ $tip->title }}</td>
+                        <td>{{ $local->name }}</td>
+                        <td>{{ $local->address}}</td>
                         <td>
                             <!-- -->
                             <div>
                                 <a class="btn btn-outline-primary" tabindex="-1" role="button" aria-disabled="true"
-                                    href="{{ route('admin.tips.edit', $tip->id) }}">Editar</a>
-                                <a class="btn btn-outline-danger" tabindex="-1" role="button" aria-disabled="true" href="{{ route('admin.tips.delete', $tip->id) }}">Deletar</a>
+                                    href="{{ route('admin.locals.edit', $local->id) }}">Editar</a>
+                                <a class="btn btn-outline-danger" tabindex="-1" role="button" aria-disabled="true" href="{{ route('admin.locals.delete', $local->id) }}">Deletar</a>
 
                             </div>
                         </td>
