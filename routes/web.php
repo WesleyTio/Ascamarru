@@ -81,4 +81,11 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/locals/edit/{id}', 'Admin\LocalController@edit')->name('admin.locals.edit');
     Route::put('admin/locals/update/{id}', 'Admin\LocalController@update')->name('admin.locals.update');
     Route::get('admin/locals/delete/{id}', 'Admin\LocalController@destroy')->name('admin.locals.delete');
+
+    Route::get('admin/sales', 'Admin\SaleController@index')->name('admin.sales');
+    Route::get('admin/sales/add', 'Admin\SaleController@create')->name('admin.sales.create');
+    Route::post('admin/sales/save', 'Admin\SaleController@store')->name('admin.sales.save');
+    Route::get('admin/sales/edit/{id}', 'Admin\SaleController@edit')->name('admin.sales.edit');
+    Route::put('admin/sales/update/{id}', 'Admin\SaleController@update')->name('admin.sales.update');
+    Route::get('admin/sales/delete/{id}', 'Admin\SaleController@destroy')->name('admin.sales.delete');
 });

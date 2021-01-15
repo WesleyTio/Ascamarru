@@ -42,7 +42,7 @@
                         <a class="nav-link" href="{{ route('admin.routes') }}">Rotas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Vendas</a>
+                        <a class="nav-link" href="{{ route('admin.sales') }}">Vendas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Associados</a>

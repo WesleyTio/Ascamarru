@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class typeMaterial extends Model
 {
     use HasFactory;
-
-    public function item_sales(){
-        return $this->belongsTo(itemSale::class, 'type_material_id','fk_type_material');
+    //permite acessar item que foi vendido que tenha o mesmo id  do tipo de material
+    public function sales(){
+        return $this->belongsToMany(sale::class,'item_sales','fk_type_material','fk_sales')->using(itemSale::class);
     }
 }
