@@ -18,10 +18,14 @@ Route::get('/', function () {
     return view('site/home');
 })->name('site.home');
 
+Route::get('/painel', function () {
+    return view('Admin.home-admin');
+})->name('admin.home-admin');
 
+/*
 Route::get('/painel','LoginController@index' )->name('painel.home');
 Route::post('/painel/login','LoginController@login' )->name('painel.login');
-Route::get('/painel/logout','LoginController@logout' )->name('painel.logout');
+Route::get('/painel/logout','LoginController@logout' )->name('painel.logout'); */
 
 
 Route::middleware('auth')->group(function () {
